@@ -1,24 +1,26 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import { RecipeModel } from '../recipe.model';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+
+import { Recipe } from '../recipe.model';
+
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
- @Output() recipeWasSelected=new EventEmitter<RecipeModel>();
-  recipes:RecipeModel[]=[
-    new RecipeModel('A Test Recipe','This is test description','https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2F1474468244%2Froasted-kabocha-with-maple-syrup-and-ginger-XL-RECIPE1116.jpg%3Fitok%3DS1k9seN7&w=800&q=85')
-  ,new RecipeModel('Another Test Recipe','This is test description','https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2F1474468244%2Froasted-kabocha-with-maple-syrup-and-ginger-XL-RECIPE1116.jpg%3Fitok%3DS1k9seN7&w=800&q=85')
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+  recipes: Recipe[] = [
+    new Recipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'),
+    new Recipe('Another Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg')
+  ];
 
-];
   constructor() { }
 
   ngOnInit() {
   }
-onRecipeSelected(recipe:RecipeModel){
-this.recipeWasSelected.emit(recipe);
 
+  onRecipeSelected(recipe: Recipe) {
+   this.recipeWasSelected.emit(recipe);
+  }
 
-}
 }
